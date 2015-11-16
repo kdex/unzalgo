@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": "kdex/unzalgo",
   "author": "kdex",
   "license": "GPL-3.0",
   "devDependencies": {

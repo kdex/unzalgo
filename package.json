@@ -4,7 +4,8 @@
   "description": "Transforms ť͈͓̠̓̆ͅḥ͇͔̟̭̰̤̏̔̐̑ì̭̜͔ͯ͞s̈́̄̑͋̋͏̟͓̞͖͝ͅ → this without breaking internationalization",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "gulp",
+    "prepublish": "npm run compile"
   },
   "repository": "kdex/unzalgo",
   "author": "kdex",

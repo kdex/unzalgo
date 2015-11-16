@@ -17,7 +17,7 @@ while also having
 ```
 thiŝ te̅xt displây normally, since some lângûaĝes aĉtuallŷ uŝe thêse sŷmbo̅ls,
 ```
-and, at the same time, keep all diacritis in
+and, at the same time, keep all diacritics in
 ```
 Z nich ovšem pouze předposlední sdílí s výše uvedenou větou příliš žluťoučký kůň úpěl […]
 ```

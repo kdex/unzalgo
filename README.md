@@ -1,5 +1,5 @@
 # unzalgo
-Transforms ť͈̓̆h̏̔̐̑ì̭ͯ͞s̈́̄̑͋ → *this* without breaking internationalization.
+Transforms ť͈̓̆h̏̔̐̑ì̭ͯ͞s̈́̄̑͋ into *this* without breaking internationalization.
 ## Installation
 ```bash
 $ npm install -D unzalgo

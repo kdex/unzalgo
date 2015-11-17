@@ -1,13 +1,9 @@
-import categories from "unicode-8.0.0/categories";
+import categories from "./categories.js";
 import statistics from "stats-lite";
-const ZALGO_CHARACTER_CATEGORIES = ["Mn", "Me"];
 const DEFAULT_THRESHOLD = 0.5;
-function getCategory(string) {
-	return categories[string.codePointAt()];
-}
 export default {
 	/**
-	* Determines if the string consists of zalgo text. Note that the occurrence of a combining character is not enough to trigger this method to true. Instead, it assigns a score to each word in the string and applies some statistics to the total score. Thus, internationalized strings aren't automatically classified as Zalgo text.
+	* Determines if the string consists of Zalgo text. Note that the occurrence of a combining character is not enough to trigger this method to true. Instead, it assigns a score to each word in the string and applies some statistics to the total score. Thus, internationalized strings aren't automatically classified as Zalgo text.
 	* @method isZalgo
 	* @param {String} string
 	* A string for which a Zalgo text check is run.
@@ -24,17 +20,13 @@ export default {
 			let wordScores = [];
 			for (let word of string.normalize("NFD").split(" ")) {
 				/* Compute all categories */
-				let categories = [];
+				let banned = 0;
 				for (let character of word) {
-					let category = getCategory(character);
-					categories.push(category);
+					if (categories.includes(character)) {
+						++banned;
+					}
 				}
-				/* Count how many of the categories are banned */
-				let bannedOccurrences = [];
-				for (let bannedCategory of ZALGO_CHARACTER_CATEGORIES) {
-					bannedOccurrences.push(categories.filter(e => e === bannedCategory).length);
-				}
-				let score = bannedOccurrences.reduce((a, b) => a + b) / word.length;
+				let score = banned / word.length;
 				wordScores.push(score);
 			}
 			if (wordScores.length === 1) {
@@ -61,7 +53,7 @@ export default {
 		for (let word of string.normalize("NFD").split(/( )/)) {
 			if (this.isZalgo(word, threshold)) {
 				for (let character of word) {
-					if (!ZALGO_CHARACTER_CATEGORIES.includes(getCategory(character))) {
+					if (!categories.includes(character)) {
 						cleaned += character;
 					}
 				}

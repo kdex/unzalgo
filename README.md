@@ -30,19 +30,19 @@ By the laws of Unicode, every Unicode character is assigned to one [character ca
 First, the text is divided into words; each word is then assigned to a score that corresponds to the usage of the categories above, combined with small use of statistics. If the score exceeds a threshold, we're able to detect Zalgo text (which allows us to strip away all characters from the above categories).
 ## Getting started
 ```js
-import Unzalgo from "unzalgo";
+import { clean, isZalgo }  from "unzalgo";
 /* Regular cleaning */
-assert(Unzalgo.clean("ť͈̓̆h̏̔̐̑ì̭ͯ͞s̈́̄̑͋") === "this");
+assert(clean("ť͈̓̆h̏̔̐̑ì̭ͯ͞s̈́̄̑͋") === "this");
 /* Clean only if there are no "normal" characters in the word (t, h, i and s are "normal") */
-assert(Unzalgo.clean("ť͈̓̆h̏̔̐̑ì̭ͯ͞s̈́̄̑͋", 1) === "ť͈̓̆h̏̔̐̑ì̭ͯ͞s̈́̄̑͋");
+assert(clean("ť͈̓̆h̏̔̐̑ì̭ͯ͞s̈́̄̑͋", 1) === "ť͈̓̆h̏̔̐̑ì̭ͯ͞s̈́̄̑͋");
 /* Clean only if there is at least one combining character  */
-assert(Unzalgo.clean("français", 0) === "francais");
+assert(clean("français", 0) === "francais");
 /* "français" is not a Zalgo text, of course */
-assert(Unzalgo.isZalgo("français") === false);
+assert(isZalgo("français") === false);
 /* Unless you define the Zalgo property as containing combining characters */
-assert(Unzalgo.isZalgo("français", 0) === true);
+assert(isZalgo("français", 0) === true);
 /* You can also define the Zalgo property as consisting of nothing but combining characters */
-assert(Unzalgo.isZalgo("français", 1) === false);
+assert(isZalgo("français", 1) === false);
 ```
 ## API reference
 #### Unzalgo.prototype.isZalgo(string, threshold)

@@ -48,15 +48,15 @@ assert(isZalgo("français", 0) === true);
 /* You can also define the Zalgo property as consisting of nothing but combining characters */
 assert(isZalgo("français", 1) === false);
 ```
-## API reference
-#### Unzalgo.prototype.isZalgo(string, threshold)
+## Exports
+#### isZalgo(string, threshold)
 Determines if the string `string` consists of Zalgo text using the threshold `threshold` to assist classification. The number `threshold` falls between `0` and `1`.
 
 A threshold of `0` indicates that the string should be classified as Zalgo text if it contains at least **one** `Mn` or `Me` category Unicode codepoints. A threshold of `1` indicates that **all** codepoints in `string` must either be categorized as `Mn` or `Me`. The threshold defaults to `0.5`.
 
 Returns `true` if `string` is a Zalgo text, else `false`.
 
-#### Unzalgo.prototype.clean(string, threshold)
+#### [default export] clean(string, threshold)
 Removes all Zalgo text characters for every word in `string` if the word is Zalgo text. The number `threshold` falls between `0` and `1`.
 
 A threshold of `0` indicates that a word in the string should be classified as Zalgo text if it contains at least **one** `Mn` or `Me` category Unicode codepoint. A threshold of `1` indicates that **all** codepoints in the word must either be categorized as `Mn` or `Me`. The threshold defaults to `0.5`.

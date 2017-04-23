@@ -4,7 +4,7 @@
   "description": "Transforms ť͈͓̠̓̆ͅḥ͇͔̟̭̰̤̏̔̐̑ì̭̜͔ͯ͞s̈́̄̑͋̋͏̟͓̞͖͝ͅ into this without breaking internationalization",
   "main": "dist/unzalgo.js",
   "scripts": {
-    "compile": "gulp",
+    "compile": "babel src --out-dir dist",
     "prepublish": "npm run compile"
   },
   "repository": "kdex/unzalgo",
@@ -12,11 +12,9 @@
   "license": "GPL-3.0",
   "devDependencies": {
     "babel-cli": "^6.24.1",
+    "babel-preset-babili": "^0.0.12",
     "babel-preset-env": "^1.4.0",
-    "babel-preset-stage-0": "^6.24.1",
-    "gulp": "gulpjs/gulp#4.0",
-    "gulp-babel": "^6.1.2",
-    "gulp-uglify": "^2.1.2"
+    "babel-preset-stage-0": "^6.24.1"
   },
   "dependencies": {
     "stats-lite": "^2.0.4",

@@ -25,7 +25,7 @@ Z nich ovšem pouze předposlední sdílí s výše uvedenou větou příliš ž
 which remains unchanged after a transformation.
 
 ## Is there a demo?
-Yes! You can check it out [here](https://kdex.github.io/unzalgo/). You can edit the text at the top; the lower part shows the text after `Unzalgo.prototype.clean` using the default threshold.
+Yes! You can check it out [here](https://kdex.github.io/unzalgo/). You can edit the text at the top; the lower part shows the text after `clean` using the default threshold.
 
 ## How does it work?
 By the laws of Unicode, every Unicode character is assigned to one [character category](http://www.unicode.org/reports/tr49/Categories.txt). Zalgo text uses characters that belong to the `Mn` and `Me` category.

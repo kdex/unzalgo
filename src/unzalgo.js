@@ -46,7 +46,7 @@ export function isZalgo(string, threshold = DEFAULT_THRESHOLD) {
 export function clean(string, threshold = DEFAULT_THRESHOLD) {
 	let cleaned = "";
 	for (let word of string.normalize("NFD").split(/( )/)) {
-		if (this.isZalgo(word, threshold)) {
+		if (isZalgo(word, threshold)) {
 			for (let character of word) {
 				if (!categories.includes(character)) {
 					cleaned += character;

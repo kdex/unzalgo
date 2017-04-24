@@ -28,7 +28,7 @@ which remains unchanged after a transformation.
 Yes! You can check it out [here](https://kdex.github.io/unzalgo/). You can edit the text at the top; the lower part shows the text after `clean` using the default threshold.
 
 ## How does it work?
-By the laws of Unicode, every Unicode character is assigned to one [character category](http://www.unicode.org/reports/tr49/Categories.txt). Zalgo text uses characters that belong to the `Mn` and `Me` category.
+In Unicode, every character is assigned to a [character category](http://www.unicode.org/reports/tr49/Categories.txt). Zalgo text uses characters that belong to the categories `Mn (Mark, Nonspacing)` or `Me (Mark, Enclosing)`.
 
 First, the text is divided into words; each word is then assigned to a score that corresponds to the usage of the categories above, combined with small use of statistics. If the score exceeds a threshold, we're able to detect Zalgo text (which allows us to strip away all characters from the above categories).
 
@@ -56,4 +56,4 @@ Unzalgo functions accept a `threshold` option that lets you configure how sensit
 Returns `true` if `string` is a Zalgo text, else `false`.
 
 #### clean(string, threshold) [default export]
-Removes all Zalgo text characters for every word in `string` if the word is Zalgo text. Returns a representation of `string` without Zalgo text.
+Removes all Zalgo text characters for every "likely Zalgo" word in `string`. Returns a representation of `string` without Zalgo text.

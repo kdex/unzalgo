@@ -1,4 +1,4 @@
-import categories from "./categories.js";
+import categories from "./categories";
 import statistics from "stats-lite";
 const DEFAULT_THRESHOLD = 0.5;
 /**
@@ -20,7 +20,7 @@ export function isZalgo(string, threshold = DEFAULT_THRESHOLD) {
 		/* Compute all categories */
 		let banned = 0;
 		for (let character of word) {
-			if (categories.includes(character)) {
+			if (categories.test(character)) {
 				++banned;
 			}
 		}
@@ -48,7 +48,7 @@ export function clean(string, threshold = DEFAULT_THRESHOLD) {
 	for (let word of string.normalize("NFD").split(/( )/)) {
 		if (isZalgo(word, threshold)) {
 			for (let character of word) {
-				if (!categories.includes(character)) {
+				if (!categories.test(character)) {
 					cleaned += character;
 				}
 			}

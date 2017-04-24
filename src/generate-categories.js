@@ -1,11 +1,7 @@
-import categories from "unicode-9.0.0/categories";
-import { writeFile } from "fs";
-const codePoints = [];
-const ZALGO_CHARACTER_CATEGORIES = ["Mn", "Me"];
-for (let i = 0; i < categories.length; ++i) {
-	if (ZALGO_CHARACTER_CATEGORIES.includes(categories[i])) {
-		codePoints.push(String.fromCodePoint(i));
-	}
-}
-const data = JSON.stringify(codePoints);
-writeFile(`${__dirname}/categories.js`, `export default ${data}`);
+import Mn from "unicode-9.0.0/General_Category/Nonspacing_Mark/symbols";
+import Me from "unicode-9.0.0/General_Category/Enclosing_Mark/symbols";
+import regenerate from "regenerate";
+import { writeFileSync } from "fs";
+const codePoints = regenerate().add(Mn).add(Me);
+const data = codePoints.toString();
+writeFileSync(`${__dirname}/categories.js`, `export default /${data}/`);

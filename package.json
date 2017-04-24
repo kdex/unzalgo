@@ -5,7 +5,8 @@
   "main": "dist/unzalgo.js",
   "scripts": {
     "compile": "babel src --out-dir dist",
-    "prepublish": "npm run compile"
+    "categorize": "babel-node src/generate-categories",
+    "prepublish": "npm run categorize; npm run compile"
   },
   "repository": "kdex/unzalgo",
   "author": "kdex",

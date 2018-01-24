@@ -1,6 +1,6 @@
 {
   "name": "unzalgo",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Transforms ť͈͓̠̓̆ͅḥ͇͔̟̭̰̤̏̔̐̑ì̭̜͔ͯ͞s̈́̄̑͋̋͏̟͓̞͖͝ͅ into this without breaking internationalization",
   "main": "dist/unzalgo.js",
   "scripts": {

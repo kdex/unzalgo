@@ -1,0 +1,22 @@
+language: node_js
+dist: trusty
+node_js:
+- "9"
+- "8"
+- "7"
+- "6"
+- "5"
+- "4"
+before_install:
+- "[[ $(node -v) =~ ^v9.*$ ]] || npm i -g npm@latest"
+- npm i -g greenkeeper-lockfile@1
+before_script:
+- greenkeeper-lockfile-update
+install:
+- npm i
+script:
+- npm run categorize
+- npm run compile
+after_script:
+# Keep lock file up-to-date
+- greenkeeper-lockfile-upload

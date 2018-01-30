@@ -1,4 +1,6 @@
 # unzalgo
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/kdex/unzalgo.svg)](https://greenkeeper.io/)
 [![Travis](https://img.shields.io/travis/kdex/unzalgo.svg?branch=master)](https://travis-ci.org/kdex/unzalgo)
 [![dependencies Status](https://img.shields.io/david/kdex/unzalgo.svg)](https://david-dm.org/kdex/unzalgo)
 

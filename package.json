@@ -2,20 +2,20 @@
   "name": "unzalgo",
   "version": "2.0.6",
   "description": "Transforms ť͈͓̠̓̆ͅḥ͇͔̟̭̰̤̏̔̐̑ì̭̜͔ͯ͞s̈́̄̑͋̋͏̟͓̞͖͝ͅ into this without breaking internationalization",
-  "main": "dist/unzalgo.js",
+  "main": "dist/index.js",
   "scripts": {
     "compile": "babel src --out-dir dist",
-    "categorize": "babel-node src/generate-categories",
-    "prepublishOnly": "npm run categorize; npm run compile"
+    "prepublishOnly": "npm run compile"
   },
   "repository": "kdex/unzalgo",
   "author": "kdex",
   "license": "GPL-3.0",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-babili": "^0.1.4",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-stage-0": "^6.24.1",
+    "@babel/cli": "^7.0.0-beta.40",
+    "@babel/core": "^7.0.0-beta.40",
+    "@babel/preset-env": "^7.0.0-beta.40",
+    "@babel/preset-stage-0": "^7.0.0-beta.40",
+    "babel-preset-minify": "^0.3.0",
     "greenkeeper-lockfile": "^1.13.2",
     "unicode-10.0.0": "^0.7.4"
   },

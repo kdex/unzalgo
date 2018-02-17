@@ -1,5 +1,5 @@
-import categories from "./categories";
 import statistics from "stats-lite";
+const categories = /[\p{Mn}\p{Me}]+/u;
 const DEFAULT_THRESHOLD = 0.5;
 /**
 * Determines if the string consists of Zalgo text. Note that the occurrence of a combining character is not enough to trigger this method to true. Instead, it assigns a score to each word in the string and applies some statistics to the total score. Thus, internationalized strings aren't automatically classified as Zalgo text.
@@ -16,10 +16,10 @@ export function isZalgo(string, threshold = DEFAULT_THRESHOLD) {
 		return false;
 	}
 	const wordScores = [];
-	for (let word of string.normalize("NFD").split(" ")) {
+	for (const word of string.normalize("NFD").split(" ")) {
 		/* Compute all categories */
 		let banned = 0;
-		for (let character of word) {
+		for (const character of word) {
 			if (categories.test(character)) {
 				++banned;
 			}
@@ -45,9 +45,9 @@ export function isZalgo(string, threshold = DEFAULT_THRESHOLD) {
 */
 export function clean(string, threshold = DEFAULT_THRESHOLD) {
 	let cleaned = "";
-	for (let word of string.normalize("NFD").split(/( )/)) {
+	for (const word of string.normalize("NFD").split(" ")) {
 		if (isZalgo(word, threshold)) {
-			for (let character of word) {
+			for (const character of word) {
 				if (!categories.test(character)) {
 					cleaned += character;
 				}

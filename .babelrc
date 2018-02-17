@@ -1,11 +1,16 @@
 {
 	presets: [
-		["env", {
+		["@babel/preset-env", {
 			"targets": {
 				"node": "current"
 			}
 		}],
-		"stage-0",
-		"babili"
+		"@babel/preset-stage-0",
+		/* currently broken "minify" */
+	],
+	plugins: [
+		["@babel/plugin-proposal-unicode-property-regex", {
+			useUnicodeFlag: true
+		}]
 	]
 }

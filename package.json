@@ -16,7 +16,7 @@
     "@babel/preset-env": "^7.0.0-beta.40",
     "@babel/preset-stage-0": "^7.0.0-beta.40",
     "babel-preset-minify": "^0.3.0",
-    "greenkeeper-lockfile": "^1.13.2"
+    "greenkeeper-lockfile": "^1.14.0"
   },
   "dependencies": {
     "stats-lite": "^2.1.0"

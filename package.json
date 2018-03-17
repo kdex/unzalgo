@@ -11,10 +11,10 @@
   "author": "kdex",
   "license": "GPL-3.0",
   "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.41",
-    "@babel/core": "^7.0.0-beta.41",
-    "@babel/preset-env": "^7.0.0-beta.41",
-    "@babel/preset-stage-0": "^7.0.0-beta.41",
+    "@babel/cli": "^7.0.0-beta.42",
+    "@babel/core": "^7.0.0-beta.42",
+    "@babel/preset-env": "^7.0.0-beta.42",
+    "@babel/preset-stage-0": "^7.0.0-beta.42",
     "babel-preset-minify": "^0.3.0",
     "greenkeeper-lockfile": "^1.14.0"
   },

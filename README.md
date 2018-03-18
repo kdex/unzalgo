@@ -1,6 +1,7 @@
 # unzalgo
 
 [![Travis](https://img.shields.io/travis/kdex/unzalgo.svg?branch=master)](https://travis-ci.org/kdex/unzalgo)
+[![codecov](https://codecov.io/gh/kdex/unzalgo/branch/master/graph/badge.svg)](https://codecov.io/gh/kdex/unzalgo)
 [![dependencies Status](https://img.shields.io/david/kdex/unzalgo.svg)](https://david-dm.org/kdex/unzalgo)
 
 Transforms ť͈̓̆h̏̔̐̑ì̭ͯ͞s̈́̄̑͋ into *this* without breaking internationalization.

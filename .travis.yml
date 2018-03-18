@@ -9,4 +9,7 @@ node_js:
 install:
 - npm i
 script:
+- npm run check-commit
 - npm run compile
+after_script:
+- npm run coverage && $(npm bin)/codecov

@@ -9,9 +9,12 @@
     "url": "https://github.com/kdex/unzalgo/issues"
   },
   "scripts": {
+    "check-commit": "npm test && npm run lint",
+    "coverage": "jest --coverage",
     "compile": "babel src --out-dir dist",
-    "test": "jest",
-    "prepublishOnly": "npm run compile"
+    "lint": "eslint src",
+    "prepublishOnly": "npm run check-commit && npm run compile",
+    "test": "jest"
   },
   "jest": {
     "transform": {
@@ -26,7 +29,10 @@
     "@babel/core": "^7.0.0-beta.42",
     "@babel/preset-env": "^7.0.0-beta.42",
     "@babel/preset-stage-0": "^7.0.0-beta.42",
+    "babel-eslint": "^8.2.2",
     "babel-preset-minify": "^0.3.0",
+    "eslint": "^4.19.0",
+    "eslint-plugin-filenames": "^1.2.0",
     "greenkeeper-lockfile": "^1.14.0",
     "jest": "^22.4.2"
   },

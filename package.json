@@ -3,9 +3,20 @@
   "version": "2.0.8",
   "description": "Transforms ť͈͓̠̓̆ͅḥ͇͔̟̭̰̤̏̔̐̑ì̭̜͔ͯ͞s̈́̄̑͋̋͏̟͓̞͖͝ͅ into this without breaking internationalization",
   "main": "dist/index.js",
+  "module": "src/index.js",
+  "homepage": "https://github.com/kdex/unzalgo#readme",
+  "bugs": {
+    "url": "https://github.com/kdex/unzalgo/issues"
+  },
   "scripts": {
     "compile": "babel src --out-dir dist",
+    "test": "jest",
     "prepublishOnly": "npm run compile"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    }
   },
   "repository": "kdex/unzalgo",
   "author": "kdex",
@@ -16,7 +27,8 @@
     "@babel/preset-env": "^7.0.0-beta.42",
     "@babel/preset-stage-0": "^7.0.0-beta.42",
     "babel-preset-minify": "^0.3.0",
-    "greenkeeper-lockfile": "^1.14.0"
+    "greenkeeper-lockfile": "^1.14.0",
+    "jest": "^22.4.2"
   },
   "dependencies": {
     "stats-lite": "^2.1.0"

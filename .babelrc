@@ -6,7 +6,7 @@
 			}
 		}],
 		"@babel/preset-stage-0",
-		/* currently broken "minify" */
+		/* currently broken "babel-preset-minify" */
 	],
 	plugins: [
 		["@babel/plugin-proposal-unicode-property-regex", {

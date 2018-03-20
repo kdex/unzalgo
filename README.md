@@ -54,11 +54,14 @@ assert(isZalgo("français", 0) === true);
 assert(isZalgo("français", 1) === false);
 ```
 ## Threshold
-Unzalgo functions accept a `threshold` option that lets you configure how sensitively `unzalgo` behaves. The number `threshold` falls between `0` and `1`. A threshold of `0` indicates that the string should be classified as Zalgo text if it consists of more than **0%** of `Mn` or `Me` category Unicode codepoints. A threshold of `1` indicates that **all** codepoints in `string` must either be categorized as `Mn` or `Me`. The threshold defaults to `0.5`.
+Unzalgo functions accept a `threshold` option that lets you configure how sensitively `unzalgo` behaves. The number `threshold` falls between `0` and `1`. A threshold of `0` indicates that the string should be classified as Zalgo text if it consists of more than **0%** of `Mn` or `Me` category Unicode codepoints. A threshold of `1` indicates that **all** codepoints in `string` must either be categorized as `Mn` or `Me`. The threshold defaults to `0.55`.
 
 ## Exports
-#### isZalgo(string, threshold)
-Returns `true` if `string` is a Zalgo text, else `false`.
-
 #### clean(string, threshold) [default export]
 Removes all Zalgo text characters for every "likely Zalgo" word in `string`. Returns a representation of `string` without Zalgo text.
+
+#### computeScores(string)
+Computes a score ∈ `[0, 1]` for every word in the input string. Each score represents the ratio of Zalgo characters to total characters in a word.
+
+#### isZalgo(string, threshold)
+Returns `true` if `string` is a Zalgo text, else `false`.

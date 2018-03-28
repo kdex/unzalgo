@@ -8,7 +8,7 @@ Transforms ť͈̓̆h̏̔̐̑ì̭ͯ͞s̈́̄̑͋ into *this* without breaking int
 
 ## Installation
 ```bash
-$ npm install -D unzalgo
+$ npm i -D unzalgo
 ```
 ## About
 You can use unzalgo to both detect Zalgo text and transform it back into normal text without breaking internationalization. For example, you could transform:
@@ -19,9 +19,9 @@ into
 ```
 THIS EVIL USER INPUT
 ```
-while also having
+while also keeping
 ```
-thiŝ te̅xt displây normally, since some lângûaĝes aĉtuallŷ uŝe thêse sŷmbo̅ls,
+thiŝ te̅xt unchanged, since some lângûaĝes aĉtuallŷ uŝe thêse sŷmbo̅ls,
 ```
 and, at the same time, keep all diacritics in
 ```

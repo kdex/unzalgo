@@ -31,7 +31,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^8.2.3",
     "babel-preset-minify": "^0.4.0",
-    "codecov": "^3.0.0",
+    "codecov": "^3.0.1",
     "eslint": "^4.19.1",
     "eslint-plugin-filenames": "^1.2.0",
     "greenkeeper-lockfile": "^1.14.0",

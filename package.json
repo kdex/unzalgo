@@ -39,5 +39,5 @@
 		"prepublishOnly": "npm run check-commit && npm run build",
 		"test": "jest"
 	},
-	"version": "2.1.1"
+	"version": "2.1.2"
 }

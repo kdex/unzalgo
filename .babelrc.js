@@ -6,7 +6,9 @@ module.exports = {
 				"node": "current"
 			}
 		}],
-		"babel-preset-minify"
+		["babel-preset-minify", {
+			"mangle": false
+		}]
 	],
 	plugins: [
 		["@babel/plugin-proposal-unicode-property-regex", {

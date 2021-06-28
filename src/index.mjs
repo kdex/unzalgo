@@ -45,7 +45,7 @@ export const computeScores = string => {
 export const isZalgo = (string, threshold = DEFAULT_THRESHOLD) => {
 	const wordScores = computeScores(string);
 	const totalScore = percentile(wordScores, 0.75);
-	return totalScore >= threshold;
+	return totalScore >= Math.max(Math.min(threshold, 1), 0);
 };
 /**
 * Removes all Zalgo text characters for every word in a string if the word is Zalgo text.

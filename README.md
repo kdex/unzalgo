@@ -39,13 +39,15 @@ First, the text is divided into words; each word is then assigned to a score tha
 
 ## Getting started
 ```js
-import { clean, isZalgo }  from "unzalgo";
+import { clean, isZalgo } from "unzalgo";
 /* Regular cleaning */
 assert(clean("ť͈̓̆h̏̔̐̑ì̭ͯ͞s̈́̄̑͋") === "this");
 /* Clean only if there are no "normal" characters in the word (t, h, i and s are "normal") */
 assert(clean("ť͈̓̆h̏̔̐̑ì̭ͯ͞s̈́̄̑͋", 1) === "ť͈̓̆h̏̔̐̑ì̭ͯ͞s̈́̄̑͋");
-/* Clean only if there is at least one combining character  */
-assert(clean("français", 0) === "francais");
+/* `français` remains intact by default */
+assert(clean("français") === "français");
+/* Clean only if there is at least one combining character */
+assert(clean("français", 0) === "francais");
 /* "français" is not a Zalgo text, of course */
 assert(isZalgo("français") === false);
 /* Unless you define the Zalgo property as containing combining characters */
@@ -54,18 +56,18 @@ assert(isZalgo("français", 0) === true);
 assert(isZalgo("français", 1) === false);
 ```
 ## Threshold
-Unzalgo functions accept a `threshold` option that lets you configure how sensitively `unzalgo` behaves. The number `threshold` falls between `0` and `1`. The threshold defaults to `0.55`.
+Unzalgo functions accept a `threshold` option that lets you configure how sensitively `unzalgo` behaves. The number `threshold` is a number from `0` to `1`. The threshold defaults to `0.55`.
 
-A threshold of `0` indicates that a string should be classified as Zalgo text if at least **0%** of its codepoints have the Unicode category `Mn` or `Me`.
+A threshold of `0` indicates that a string should be classified as Zalgo text if at least **0 %** of its codepoints have the Unicode category `Mn` or `Me`.
 
-A threshold of `1` indicates that a string should be classified as Zalgo text if at least **100%** of its codepoints have the Unicode category `Mn` or `Me`.
+A threshold of `1` indicates that a string should be classified as Zalgo text if at least **100 %** of its codepoints have the Unicode category `Mn` or `Me`.
 
 ## Exports
-#### clean(string, threshold) [default export]
+#### clean(string[, threshold]) [default export]
 Removes all Zalgo text characters for every "likely Zalgo" word in `string`. Returns a representation of `string` without Zalgo text.
 
 #### computeScores(string)
 Computes a score ∈ `[0, 1]` for every word in the input string. Each score represents the ratio of Zalgo characters to total characters in a word.
 
-#### isZalgo(string, threshold)
+#### isZalgo(string[, threshold])
 Returns `true` if `string` is a Zalgo text, else `false`.

@@ -29,7 +29,7 @@
 		"build": "babel src --out-dir dist",
 		"check-commit": "npm test && npm run lint",
 		"coverage": "jest --coverage",
-		"lint": "eslint src",
+		"lint": "eslint 'src/**/*.mjs'",
 		"prepublishOnly": "npm run check-commit && npm run build",
 		"test": "jest"
 	},

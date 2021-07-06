@@ -84,7 +84,7 @@ import { isZalgo } from "unzalgo";
 assert(isZalgo("français", 1) === false);
 ```
 ## Detection threshold
-Some of this library's functions accept a `detectionThreshold` option that let you configure how sensitively `unzalgo` behaves. The number `detectionThreshold` is a number from `0` to `1` and defaults to `0.55`.
+Some of this library's functions accept a `detectionThreshold` option that lets you configure how sensitively `unzalgo` behaves. It is a number from `0` to `1` and defaults to `0.55`.
 
 A detection threshold of `0` indicates that a string should be classified as Zalgo text if at least **0 %** of its codepoints have the Unicode category `Mn` or `Me`.
 

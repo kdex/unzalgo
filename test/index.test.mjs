@@ -5,7 +5,7 @@ const expectZalgo = text => expectZalgoConditional(text, true);
 const expectNoZalgo = text => expectZalgoConditional(text, false);
 const expectScores = (text, expected) => expect(computeScores(text)).toEqual(expected);
 const compose = text => text.normalize("NFC");
-test("empty string", () => {
+test("Empty string", () => {
 	const text = "";
 	expectScores(text, [
 		0 / 1
@@ -13,7 +13,7 @@ test("empty string", () => {
 	expectClean(text, text);
 	expectNoZalgo(text);
 });
-test("single ASCII character", () => {
+test("Single ASCII character", () => {
 	const text = "x";
 	expectScores(text, [
 		0 / 1
@@ -21,7 +21,7 @@ test("single ASCII character", () => {
 	expectClean(text, text);
 	expectNoZalgo(text);
 });
-test("evil user input", () => {
+test("Evil user input", () => {
 	const text = "T͘H͈̩I͏̼S͇̬ ́E̬̕V̙I̧͖L͇͍ ̺̮U͝S̞͝E͚͝R IṊ͞P̫Ù̹T̜͝";
 	expectScores(text, [
 		7 / 11,
@@ -32,7 +32,13 @@ test("evil user input", () => {
 	expectClean(text, "THIS EVIL USER INPUT");
 	expectZalgo(text);
 });
-test("some diacritics", () => {
+test("Clean only half of evil user input", () => {
+	const text = "S̷̡̡̡̱̦̣̹̭̻͔̣͖̤̜̮̓̒̋̋͌̄̊̄̎̓o̷̡̢̨̗͔̤̫͙̖̙͉̲̘͙͔͖̤͎̙͓̳̣̳̣͋̀̇́̈̏̾̇̇̀̎̔̓̇̆͝ḿ̸̨̮̟̣̙̮̲̭͎͓͖̘̒̀͌͆͊̿̾̄̽̀̔̈́̍̒͒̔̕͝e̷̛͖̤͍̬͖̔̈̆̐͌̃̓͌̽͑̾̐̇̑̇̈̂̋̂͠ ̵̢̨̞͕̥̯̼͈̺̖̞̥̳̤̓̇̓̓̈͆z̷̡̬̱̺̘̹̭̙̭͚̼̝̤̳̦̲̬̜͌͌̊̆ͅͅa̷̢̡̺͕͈̰̮̲͔̙̱̼͉̲̼̝̝̻̹̱̹̝̗̿̋͐̊͑͑͐̽̆̉̓͋̽̅̈́̚͜͝l̶͇͍͈̞̠̜͕͒̑͆̇̊̚͝g̸̨̛͎͚͚̗̘͙͔͓̠̝͔̬̳̗̯̮͍̻̥̃͊̏̐̌͒̀̓͛͠ȭ̷̢̡̧̤͇̮͕̘̱̬̖̪͈̘̟̉͑͌̑̿̇̊̿͛͊̎͌̀̽͛͋̃̑́̈́̈́̅͠ ̷̛͙͙̜̫̼̙̯́̉̊̿̈́́̽͛̓̓̊̓̋̏̀͌͠ͅt̷̠̞̯̤̃̇̒̾͒̑͋̒̈́͋͗̉̉͐̍̾͑̈́̈́͌͆̀̂̋͌͜ȩ̶̧̢̡̛̛̣͕̥͕͇̖͈̗͍̖̠͚̮͙̅̂̌́̐͛͗̽͋́̿͂̅̒͌̐͆̏̕͜͝͝͝͠x̶̡̧̛͚̗̖̙͚͍̻̙̥͓͖͕͍̮͖̙̙̜͓͈̩̯̐͛̏̍́͌̏̂̀̐͛͂̈́̆́̀̒̉̾̈́͌͘͜͠t̸̨̨̲̟͎̩̱̹̬͙̩̠͇̪͒̃̒͛̍̎̂͒̀́́̍.̵̮͐̋̐͐̅̿̿́̊͑́̂͗͂̊̽̚̕̕͘̕͘͠";
+	expectClean(text, "Somê̋̂͠ zalgó̈́̅͠ text.̕͘̕͘͠", {
+		targetDensity: 0.5
+	});
+});
+test("Some diacritics", () => {
 	const text = "having thiŝ te̅xt displây normally, since some lângûaĝes aĉtuallŷ uŝe thêse sŷmbo̅ls";
 	expectScores(text, [
 		0 / 6,
@@ -50,7 +56,9 @@ test("some diacritics", () => {
 	]);
 	expectClean(text, compose(text));
 	expectNoZalgo(text);
-	expectClean(text, "having this text display normally, since some languages actually use these symbols", 0);
+	expectClean(text, "having this text display normally, since some languages actually use these symbols", {
+		detectionThreshold: 0
+	});
 });
 test("Vietnamese", () => {
 	const text = "được";
@@ -123,13 +131,15 @@ test("Zalgo word", () => {
 	expectClean(text, "EVIL");
 	expectZalgo(text);
 });
-test("`français` remains unchanged by default", () => {
+test("The word `français` remains unchanged by default", () => {
 	const text = "français";
 	expectClean(text, "français");
 });
-test("`français` changes with a threshold of `0`", () => {
+test("The word `français` changes with a threshold of `0`", () => {
 	const text = "français";
-	expectClean(text, "francais", 0);
+	expectClean(text, "francais", {
+		detectionThreshold: 0
+	});
 });
 test("Zalgo sentence", () => {
 	const text = "Ṱ̶̘̱̞̩̘̳̫̠͖̖̭̪ͣ̓̆̅̾̋̂ͨ͝h̡̢̲̻̮̖̤̼͉͕̯͎͔̖̘̮̠̟̠͛̎́̔̃̉ͭ̆ͥ͜i̡̛͙͓̞̜̩ͯͮͮ̾̓̄̽͋͒͌͊̔ͯ̃̂̓ͣ͒̚ͅͅs̴̹̙̠̹̱̹͑̐̀ͨ̍ͫ͋̿̓̿͞ ̶̷̧͖̯̘̭̩̯͍̲̳̝̫͇̥͙͉̟̘̲͎̾ͥ̓ͭͯ̐ͭ̒̂̄ͦ͐̀i̶͎͕̱̤̭̦̙̞̙̰̲͙̽͗̏ͯͭ̃̉͗̀͘͝͞ş̥̭͕͇̰͉̺̬̣̜ͨͣ̈̂̈̏̿̒͋̊̿̃́ͣ̈̀ͅ ̵̵̲̖̩͚͚̹̥͔͚̼̠̙̬͍͈̇̿ͬͥͣ̍̐ͤ̊ͅZ̷̊̈́͌̌̀͢͝҉̭̯͇̪͖̫̩̖͢a̻̤̯͔̯͉͎̟͚̍̾̅ͨͥ̊̽̿̎̐͌̇̋ͫ̆ͭͣ̆́͘͡l̶̬͓̞̮͇̜̻̳̲̱̺̂͐ͯ͒͋̏̃̅̿ͧ͒͆ͫ̏̾́̀̚͠ģ̡̯̝̻͖̼͚ͮͬ̎ͨ̔̊̎̑̑̽̅̍͘͟o̸͎̤͕̺̞̙͕̗̒́̌̏͂͊͑̕͞͠ ̴̡͐̈́͋͑̏ͤͦ͌̌͌́̎̽̇ͫ̎́̿̔͡͏̦̻̹̫̘̟͔t̸̂́̽ͮͦ͋͐̇̑̄̊͋ͣ̈́ͨ͛̇̏͡҉̮͕͕̫͓̥͖̼ẽ̊ͭ̉͌̔̓͘͏̤̟͕̟͚̦̞̩̦̤͎͖̭͢x̆̓͆̋͋͊̌̈̒ͩ̍ͬͮͣ͟͠҉͙̦̪̫͈͞ţ̴̛̩̺̳͖̺̽͗ͧ̿ͯ̃͊͆ͪ̾͊̓͜.̛̦̩̻͉͉̠̖̗̻̻̳̽ͧͬ̃̿͘͠";

@@ -83,16 +83,12 @@ import { isZalgo } from "unzalgo";
 /* You can also define the Zalgo property as consisting of nothing but combining characters */
 assert(isZalgo("français", 1) === false);
 ```
-## Thresholds
-This library's functions accept several `threshold` options that let you configure how sensitively `unzalgo` behaves. The number `threshold` is a number from `0` to `1`. The detection threshold defaults to `0.55` whereas the removal threshold defaults to `1`.
+## Detection threshold
+Some of this library's functions accept a `detectionThreshold` option that let you configure how sensitively `unzalgo` behaves. The number `detectionThreshold` is a number from `0` to `1` and defaults to `0.55`.
 
 A detection threshold of `0` indicates that a string should be classified as Zalgo text if at least **0 %** of its codepoints have the Unicode category `Mn` or `Me`.
 
 A detection threshold of `1` indicates that a string should be classified as Zalgo text if at least **100 %** of its codepoints have the Unicode category `Mn` or `Me`.
-
-A removal threshold of `0` indicates that no characters that have been detected as Zalgo characters should be removed.
-
-A removal threshold of `1` indicates that all characters that have been detected as Zalgo characters should be removed.
 
 ## Exports
 #### clean(string[, options]): string [default export]
@@ -109,7 +105,7 @@ An object of options.
 - `options.detectionThreshold: number = 0.55`
 A threshold ∈ [0, 1]. The higher the threshold, the more combining characters are needed for it to be detected as Zalgo text.
 - `options.targetDensity: number = 0`
-A threshold ∈ [0, 1]. The higher the density, the more Zalgo characters will be part of the resulting string. The result is guaranteed to have a Zalgo-character density that is less than or equal to the one provided.
+A threshold ∈ [0, 1]. The higher the density, the more Zalgo characters will be part of the resulting string. The result is guaranteed to have a Zalgo-character density that is less than or equal to the one provided. A target density of `0` indicates that none of the combining characters should be part of the resulting string. A target density of `1` indicates that all combining characters should be part of the resulting string.
 #### computeScores(string): number[]
 Computes a score ∈ `[0, 1]` for every word in the input string. Each score represents the ratio of Zalgo characters to total characters in a word.
 

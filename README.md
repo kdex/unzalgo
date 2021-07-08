@@ -43,23 +43,26 @@ First, the text is divided into words; each word is then assigned to a score tha
 import { clean } from "unzalgo";
 assert("this" === clean("ť͈̓̆h̏̔̐̑ì̭ͯ͞s̈́̄̑͋"));
 ```
+### Partial cleaning
+```js
+import { clean } from "unzalgo";
+assert("Somê̋̂͠ Zalgó̈́̅͠ text.̕͘̕͘͠" === clean("S̷̡̡̡̱̦̣̹̭̻͔̣͖̤̜̮̓̒̋̋͌̄̊̄̎̓o̷̡̢̨̗͔̤̫͙̖̙͉̲̘͙͔͖̤͎̙͓̳̣̳̣͋̀̇́̈̏̾̇̇̀̎̔̓̇̆͝ḿ̸̨̮̟̣̙̮̲̭͎͓͖̘̒̀͌͆͊̿̾̄̽̀̔̈́̍̒͒̔̕͝e̷̛͖̤͍̬͖̔̈̆̐͌̃̓͌̽͑̾̐̇̑̇̈̂̋̂͠ ̵̢̨̞͕̥̯̼͈̺̖̞̥̳̤̓̇̓̓̈͆Z̷̡̬̱̺̘̹̭̙̭͚̼̝̤̳̦̲̬̜͌͌̊̆ͅͅa̷̢̡̺͕͈̰̮̲͔̙̱̼͉̲̼̝̝̻̹̱̹̝̗̿̋͐̊͑͑͐̽̆̉̓͋̽̅̈́̚͜͝l̶͇͍͈̞̠̜͕͒̑͆̇̊̚͝g̸̨̛͎͚͚̗̘͙͔͓̠̝͔̬̳̗̯̮͍̻̥̃͊̏̐̌͒̀̓͛͠ȭ̷̢̡̧̤͇̮͕̘̱̬̖̪͈̘̟̉͑͌̑̿̇̊̿͛͊̎͌̀̽͛͋̃̑́̈́̈́̅͠ ̷̛͙͙̜̫̼̙̯́̉̊̿̈́́̽͛̓̓̊̓̋̏̀͌͠ͅt̷̠̞̯̤̃̇̒̾͒̑͋̒̈́͋͗̉̉͐̍̾͑̈́̈́͌͆̀̂̋͌͜ȩ̶̧̢̡̛̛̣͕̥͕͇̖͈̗͍̖̠͚̮͙̅̂̌́̐͛͗̽͋́̿͂̅̒͌̐͆̏̕͜͝͝͝͠x̶̡̧̛͚̗̖̙͚͍̻̙̥͓͖͕͍̮͖̙̙̜͓͈̩̯̐͛̏̍́͌̏̂̀̐͛͂̈́̆́̀̒̉̾̈́͌͘͜͠t̸̨̨̲̟͎̩̱̹̬͙̩̠͇̪͒̃̒͛̍̎̂͒̀́́̍.̵̮͐̋̐͐̅̿̿́̊͑́̂͗͂̊̽̚̕̕͘̕͘͠", {
+	targetDensity: 0.5
+}));
+```
 ### Configuring detection
 ```js
 import { clean } from "unzalgo";
 /* Clean only if there are no "normal" characters in the word (t, h, i and s are "normal") */
 assert("ť͈̓̆h̏̔̐̑ì̭ͯ͞s̈́̄̑͋" === clean("ť͈̓̆h̏̔̐̑ì̭ͯ͞s̈́̄̑͋", {
-	thresholds: {
-		detection: 1
-	}
+	detectionThreshold: 1
 }));
 ```
 ```js
 /* Clean only if there is at least one combining character */
 import { clean } from "unzalgo";
 assert("francais" === clean("français", {
-	thresholds: {
-		detection: 0
-	}
+	detectionThreshold: 0
 }));
 ```
 ```js
